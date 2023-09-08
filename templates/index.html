@@ -7,16 +7,20 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <main class="main-container">
       <header class="header">
         <h1 class="header-title">Mon A.I.de mémoire</h1>
+        <button id="darkModeButton">Activer/Désactiver le Mode Sombre</button>
       </header>
 
       <form id="text-form" class="text-container">
-        <label for="text" class="text-label">Texte à travailler</label>
+        <label for="text" class="prompt-label">Texte à réviser</label>
 
         <input
           type="text"
@@ -32,10 +36,18 @@
 
       </form>
 
+      <form id="pdfForm" class="text-container">
+        <label for="text" class="prompt-label">Pdf à réviser</label>
+        <input type="file" name="pdfUpload" id="pdfUpload" accept=".pdf" required class="text-input">
+        <input type="submit" value="Enregistrer le PDF" class="button" id="pdfButton">
+      </form>
+
+      <div style="width: 100%; height: 10px;"></div>
+
       <section id="messages-container" class="messages-container">
         <div class="message message-ai">
           Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
-          le cours et je te répondrai.
+          le document et je te répondrai. Tu peux aussi me donner un autre document.
         </div>
       </section>
 
@@ -48,7 +60,7 @@
           name="prompt"
           class="prompt-input"
           autocomplete="off"
-        />
+        />  
 
         <button type="submit" class="button" id="submit-button">
           Envoyer
